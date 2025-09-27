@@ -1,0 +1,67 @@
+from pymongo import MongoClient
+import re
+import os
+from dotenv import load_dotenv
+from detect.detect_ingredient import detect
+
+load_dotenv()
+database = os.environ.get("database")
+
+class MealDB:
+    def __init__(self, connection_string, db_name="meals_database"):
+        self.cluster = MongoClient(database)
+        self.db = self.cluster[db_name]
+        self.collection = self.db["meals_by_area"]
+
+    def search_meals_by_region_and_ingredients_api(self, region):
+        ingredients_list = detect()
+        def normalize_ingredient(ingredient):
+            if not ingredient:
+                return ""
+
+            cleaned = ingredient.lower()
+            cleaned = re.sub(r'[\d/]+', '', cleaned)
+
+            # Remove units (whole words only)
+            units = r'\b(g|kg|ml|l|tbls|tbs|tsp|cup|cups|can|garnish|oz|lb|teaspoon|tablespoon|tbsp)\b'
+            cleaned = re.sub(units, '', cleaned)
+
+            # Remove descriptors, colors, and prep terms
+            descriptors = r'\b(salted|unsalted|seperated|chopped|minced|grated|shredded|sliced|roasted|boiled|fried|baked|steamed|smoked|peeled|crushed|ground|toasted|fresh|large|small|medium|extra-virgin|organic|raw|frozen|cooked|whole|skinless|boneless|red|green|yellow|white|black|brown|orange|pink|purple|pinch|clove|stick|topping|of)\b'
+            cleaned = re.sub(descriptors, '', cleaned)
+
+            # Remove punctuation
+            cleaned = re.sub(r'[,:()]', '', cleaned)
+
+            # Collapse multiple spaces
+            cleaned = re.sub(r'\s+', ' ', cleaned)
+
+            return cleaned.strip()
+
+        """
+        Search meals in a specific region that contain ALL ingredients in ingredients_list.
+        """
+        region_doc = self.collection.find_one({"region": region})
+        
+        if not region_doc:
+            return []
+
+        meals = region_doc.get("meals", [])
+        filtered_meals = []
+        
+        search_ingredients = [normalize_ingredient(ing) for ing in ingredients_list]
+    
+        for meal in meals:
+            meal_ingredients = [normalize_ingredient(ing) for ing in meal.get("ingredients", [])]
+
+            if all(ing in meal_ingredients for ing in search_ingredients):
+                recipe_data = {
+                "recipe_name": meal.get("name"),
+                "origin": region,
+                "ingredients": meal.get("ingredients", []),  # keep original ingredients for display
+                "image": meal.get("thumbnail")  # include image
+                }
+                filtered_meals.append(recipe_data)
+
+        return filtered_meals
+    
