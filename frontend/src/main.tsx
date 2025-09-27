@@ -11,16 +11,13 @@ import RecipePage from './routes/RecipePage.tsx'
 createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
   <Routes>
-    <Route path="/" element={<Layout />}>
       <Route index element={<App />} />
 
       <Route path="/form" element={<UserForm />} />
 
       <Route path="/recipes" element={< RecipePage/>} />
 
-    </Route>
-
-
+      
   </Routes>
 </BrowserRouter>
 )

@@ -18,7 +18,24 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
+user_info = {
+    "country" : "USA",
+    "image": "bruh.jpg"
+}
 
-@app.get("/", tags=["root"])
-async def read_root() -> dict:
-    return {"message": "Whats up twin"}
+recipe_data = [
+    {
+        "recipe_name": "Eggs",
+        "origin": "USA",
+        "ingredients": ["salt"]
+    },
+    {
+        "recipe_name": "Fries",
+        "origin": "France",
+        "ingredients": ["salt, potatoes"]
+    }
+]
+
+@app.get("/recipe", tags=["recipes"])
+async def get_recipes() -> dict:
+    return { "data": recipe_data }
