@@ -26,6 +26,23 @@ class MealDB:
                             if word == other_word:
                                 res.add(ingredient)
             return res
+        
+        def difference_for_two(they_have, we_have):
+            res = set()
+            for ingredient in we_have:
+                ing_arr = ingredient.split(" ")
+                found = False
+                for word in ing_arr:
+                    for other_ing in they_have:
+                        for other_word in other_ing.split(" "):
+                            if word == other_word:
+                                found = True
+                                break
+                        if found:
+                            break
+                if not found:
+                    res.add(ingredient)
+            return res
 
 
         def normalize_ingredient(ingredient):
