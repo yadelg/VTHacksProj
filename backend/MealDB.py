@@ -69,6 +69,6 @@ class MealDB:
             }
             filtered_meals.append(recipe_data)
         
-        print(sorted(filtered_meals, key = lambda x: x["matches"], reverse=True)[:3])
+        print(sorted(filtered_meals, key = lambda x: x["matches"], reverse=True)[:6])
 
-        return sorted(filtered_meals, key = lambda x: x["matches"], reverse=True)[:3]
+        return sorted(filtered_meals, key = lambda x: x["matches"], reverse=True)[:6]

@@ -1,0 +1,289 @@
+:root {
+  /* Color Palette */
+  --primary: #FF6F61;
+  --secondary: #6B5B95;
+  --accent: #88B04B;
+
+  --bg-light: #F8F8F8;
+  --bg-card: #FFFFFF;
+
+  --text-dark: #343A40;
+  --text-medium: #5A6268;
+
+  --shadow: rgba(0, 0, 0, 0.15);
+  --shadow-hover: rgba(0, 0, 0, 0.25);
+
+  /* Typography scale (fluid) */
+  --fs-h1: clamp(1.8rem, 2.5vw, 2.2rem);
+  --fs-h2: clamp(1.1rem, 1.8vw, 1.3rem);
+  --fs-body: clamp(0.95rem, 1.5vw, 1rem);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2rem;
+}
+
+/* Dark overlay behind the sidebar */
+.sideview-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    /* darkened background */
+    z-index: 1999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.sideview-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Sideview panel itself */
+.sideview {
+    position: fixed;
+    top: 0;
+    right: -70vw;
+    /* hidden off screen */
+    width: 70vw;
+    /* way wider */
+    max-width: 900px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -3px 0 6px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+}
+
+.sideview.open {
+    right: 0;
+    /* slides in */
+}
+
+.sideview-content {
+    padding: 30px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Close button */
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* Shrink the image */
+.sideview-content img {
+    width: 60%;
+    /* smaller image */
+    max-height: 250px;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto;
+    /* center */
+    border-radius: 8px;
+}
+
+/* Parent container for side-by-side sections */
+.ingredients-section {
+    display: flex;
+    gap: 40px;
+    /* space between the two sections */
+    margin: 20px 0;
+    flex-wrap: wrap;
+    /* wrap on small screens */
+}
+
+.ingredients-have,
+.ingredients-missing {
+    flex: 1;
+    /* split space evenly */
+    min-width: 250px;
+}
+
+/* Common list styles */
+.ingredients-have ul,
+.ingredients-missing ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ingredients-have li,
+.ingredients-missing li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.ingredients-have li::before {
+    content: '✔';
+    /* check mark */
+    color: green;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.ingredients-missing li::before {
+    content: '✖';
+    /* x mark */
+    color: red;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.ingredients-have h3,
+.ingredients-missing h3 {
+    margin-bottom: 10px;
+}
+
+.sideview-content h1,
+.sideview-content h2,
+.ingredients {
+  text-align: center;
+  margin: var(--space-xs) 0;
+}
+
+/* Main Recipe Name (h1) */
+.sideview-content h1 {
+  font-size: var(--fs-h1);
+  color: var(--primary); /* Using your primary color */
+  font-weight: bold;
+}
+
+/* Origin (h2) */
+.sideview-content h2 {
+  font-size: var(--fs-h2);
+  color: var(--secondary); /* Using your secondary color */
+  font-weight: 500;
+  margin-bottom: var(--space-m);
+}
+
+/* Adjust the image */
+.sideview-content img {
+  display: block;
+  margin: 0 auto var(--space-m) auto;
+  max-width: 60%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--shadow);
+}
+
+/* Ingredients section side by side */
+.ingredients-section {
+  display: flex;
+  gap: var(--space-l);
+  justify-content: center;
+  margin-bottom: var(--space-m);
+}
+
+.ingredients-have,
+.ingredients-missing {
+  flex: 1;
+  background: var(--bg-card);
+  padding: var(--space-s);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px var(--shadow);
+}
+
+/* Section headers with color accents */
+.ingredients-have h3 {
+  color: var(--accent); /* Accent green */
+  text-align: center;
+  margin-bottom: var(--space-s);
+}
+
+.ingredients-missing h3 {
+  color: var(--secondary); /* Secondary purple */
+  text-align: center;
+  margin-bottom: var(--space-s);
+}
+
+/* Ingredient lists */
+.ingredients-have ul,
+.ingredients-missing ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ingredients-have li,
+.ingredients-missing li {
+  font-size: var(--fs-body);
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
+/* Optional check/X icons styles */
+.ingredients-have li::before {
+  content: "✔️";
+  color: var(--accent);
+}
+
+.ingredients-missing li::before {
+  content: "❌";
+  color: var(--secondary);
+}
+
+/* Instructions */
+.sideview-content h3 {
+  font-size: var(--fs-h2);
+  color: var(--text-medium);
+  margin-top: var(--space-m);
+}
+
+.sideview-content p {
+  font-size: var(--fs-body);
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+/* Reset only the first ingredients list */
+.ingredients ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style only the first ingredients list items */
+.ingredients ul li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--fs-body);
+  color: var(--text-dark);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--bg-light);
+}
+
+/* Add a custom bullet just for the first list */
+.ingredients ul li::before {
+  content: "•"; /* simple dot bullet */
+  color: var(--secondary); /* matches your palette */
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* Optional hover highlight */
+.ingredients ul li:hover {
+  background: var(--bg-light);
+  border-radius: 4px;
+}
