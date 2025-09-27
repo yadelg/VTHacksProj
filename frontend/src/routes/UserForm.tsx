@@ -25,7 +25,8 @@ function UserForm() {
         
         const formData = new FormData()
         formData.append('country', country)
-        formData.append('image', image)
+        const constantFilename = "fridge_contents_image.jpg";
+        formData.append('image', image, constantFilename)
 
         try {
             const resp = await fetch('http://localhost:8000/send_info', {
@@ -38,6 +39,10 @@ function UserForm() {
                 console.log("Upload success", resp)
                 setCountry('')
                 setImage(null)
+                const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+                if (fileInput) {
+                    fileInput.value = '';
+                }
             } else {
                 const err = await resp.json();
                 console.error("Error: ", err)

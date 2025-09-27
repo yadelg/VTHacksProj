@@ -8,7 +8,7 @@ load_dotenv()
 database = os.environ.get("database")
 
 class MealDB:
-    def __init__(self, connection_string, db_name="meals_database"):
+    def __init__(self, db_name="meals_database"):
         self.cluster = MongoClient(database)
         self.db = self.cluster[db_name]
         self.collection = self.db["meals_by_area"]
