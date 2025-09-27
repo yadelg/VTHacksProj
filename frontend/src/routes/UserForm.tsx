@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const countryFlags: { [key: string]: string } = {
     American: '🇺🇸',
@@ -77,7 +77,7 @@ const FridgeForm: React.FC = () => {
             });
 
             if (resp.ok) {
-                const result = await resp.json(); // Assuming you don't need the result for display here
+                //const result = await resp.json(); // Assuming you don't need the result for display here
                 setMessage({ type: 'success', text: "Upload successful! Getting your recipes..." });
                 setCountry('');
                 setImage(null);

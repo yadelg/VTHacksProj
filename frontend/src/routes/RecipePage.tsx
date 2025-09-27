@@ -1,5 +1,5 @@
 // src/pages/RecipePage.tsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import RecipeCard, { Recipe } from '../components/RecipeCard';
 import './RecipePage.css';
 import DetailedRecipeSideview from '../components/DetailedRecipeSideview';
