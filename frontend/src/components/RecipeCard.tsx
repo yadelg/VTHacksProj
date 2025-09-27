@@ -8,7 +8,7 @@ export interface Recipe {
     ingredients: string[];
     missing: string[],
     have: string[],
-    image: string;
+    image: string,
     instructions: string;
 }
 

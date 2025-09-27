@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 32px;
-    z-index: 1000;
+    z-index: 3000;
     box-sizing: border-box;
 }
 
