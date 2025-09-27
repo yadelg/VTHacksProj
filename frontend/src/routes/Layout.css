@@ -12,3 +12,8 @@
     z-index: 1000;
     box-sizing: border-box;
 }
+
+.logo {
+    height: 200px;
+    width: auto;
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from './UserForm.module.css'
+import { Link } from "react-router";
 
 function UserForm() {
 
@@ -96,7 +97,14 @@ function UserForm() {
                     <option value="Vietnamese">Vietnam</option>
                 </select>
             </div>
-            <button type="submit" >Get Recipes!</button>
+
+            <Link to="/recipes" style={{ textDecoration: 'none' }}>
+
+                <button type="submit" className={styles.SubmitButton}>Submit</button>
+
+            </Link>
+            
+            
         </form>
         
         </>

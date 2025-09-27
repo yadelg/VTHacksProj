@@ -9,7 +9,13 @@ function App() {
 
   return (
     <>
+
+
+      
       <div className={styles.header}>
+
+        
+
 
         <h1>Welcome to GlobalEats!</h1>
         <h2>Discover recipes from around the world based on what you have in your fridge!</h2>
