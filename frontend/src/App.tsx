@@ -1,14 +1,21 @@
 import React from 'react';
 import AnimatedHeroText from './components/AnimatedHeroText';
 import FeaturesSection from './components/FeaturesSection';
-import Footer from './components/Footer';
 import { HorizontalFlagStrip } from './components/FlagBorder';
 import { Link } from 'react-router-dom';
-import './App.module.css';
+import { useEffect } from 'react';
+import './App.css';
 
 const App: React.FC = () => {
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto'; // restore scroll on unmount
+    };
+  }, []);
   return (
-    <div className="bg-white text-black min-h-screen flex flex-col font-sans overflow-hidden">
+    <div className="bg-white text-black min-h-screen flex flex-col font-sans ">
 
       {/* Padded Content Wrapper */}
       <div className="relative flex-grow flex flex-col px-6 md:px-6 w-full max-w-7xl mx-auto">
@@ -27,7 +34,7 @@ const App: React.FC = () => {
                     className="text-3xl sm:text-4xl text-black animate-fade-in-up font-cursive font-bold"
                     style={{ animationDelay: '0.5s' }}
                   >
-                    Your palate w/ divPalate
+                    Your Palate
                   </h2>
 
                   <Link to="/form">
@@ -56,7 +63,6 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <Footer />
     </div>
   );
 };
