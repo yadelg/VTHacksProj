@@ -40,6 +40,7 @@ interface Message {
 
 const FridgeForm: React.FC = () => {
     const [image, setImage] = useState<File | null>(null);
+    const [seasoningImage, setSeasoningImage] = useState<File | null>(null);
     const [country, setCountry] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [message, setMessage] = useState<Message>({ type: '', text: '' });
@@ -55,12 +56,21 @@ const FridgeForm: React.FC = () => {
         }
     };
 
+    const handleSeasoningImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files.length > 0) {
+            setSeasoningImage(e.target.files[0]);
+            setMessage({ type: '', text: '' });
+        } else {
+            setSeasoningImage(null);
+        }
+    };
+
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
         setMessage({ type: '', text: '' });
 
-        if (!image) {
+        if (!image || !seasoningImage) {
             setMessage({ type: 'error', text: 'Please upload an image of your fridge contents.' });
             setIsLoading(false);
             return;
@@ -69,6 +79,7 @@ const FridgeForm: React.FC = () => {
         const formData = new FormData();
         formData.append('country', country);
         formData.append('image', image, 'fridge_contents_image.jpg');
+        formData.append('seasoningImage', seasoningImage, 'seasoning_contents_image.jpg');
 
         try {
             const resp = await fetch('http://localhost:8000/send_info', {
@@ -80,6 +91,7 @@ const FridgeForm: React.FC = () => {
                 setMessage({ type: 'success', text: 'Upload successful! Getting your recipes...' });
                 setCountry('');
                 setImage(null);
+                setSeasoningImage(null);
                 navigate('/recipes');
             } else {
                 const err = await resp.json();
@@ -123,7 +135,7 @@ const FridgeForm: React.FC = () => {
                 )}
 
                 <div className="fridge-section">
-                    <label className="fridge-label">📸 Upload Fridge Contents:</label>
+                    <label className="fridge-label">🥗 Upload Fridge Contents:</label>
 
                     <label htmlFor="file-upload" className="fridge-input-wrapper">
                         <span>Select File here</span>
@@ -142,6 +154,30 @@ const FridgeForm: React.FC = () => {
                         type="file"
                         accept="image/*"
                         onChange={handleImageChange}
+                        className="fridge-input-file"
+                    />
+                </div>
+
+                <div className="fridge-section">
+                    <label className="fridge-label">🧂 Upload Seasoning Contents:</label>
+
+                    <label htmlFor="seasoning-upload" className="fridge-input-wrapper">
+                        <span>Select File here</span>
+                        <div className="fridge-file-info">Files Supported: JPG, PNG</div>
+                        <span className="fridge-choose-btn">Choose File</span>
+                        {/* Show file name after upload */}
+                        {seasoningImage && (
+                            <div className="fridge-file-name">
+                                Selected: <strong>{seasoningImage.name}</strong>
+                            </div>
+                        )}
+                    </label>
+
+                    <input
+                        id="seasoning-upload"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleSeasoningImageChange}
                         className="fridge-input-file"
                     />
                 </div>

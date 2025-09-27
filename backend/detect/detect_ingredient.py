@@ -7,7 +7,7 @@ import os
 from dotenv import load_dotenv
 import os
 
-def detect():
+def detect(path):
     load_dotenv()  # reads the .env file
 
     # --- 1. API Key Setup ---
@@ -36,7 +36,7 @@ def detect():
     # Get the directory of this script
     script_dir = os.path.dirname(os.path.abspath(__file__))
     # Build a relative path to the image
-    image_path = os.path.join(script_dir, "../uploaded_images/fridge_contents_image.jpg")
+    image_path = os.path.join(script_dir, path)
     image = Image.open(image_path)
 
     # --- 4. Configure Response ---

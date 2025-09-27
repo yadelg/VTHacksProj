@@ -30,7 +30,8 @@ async def get_recipes() -> dict:
 @app.post("/send_info")
 async def upload_info(
     country: str = Form(...),
-    image: UploadFile = File(...)
+    image: UploadFile = File(...),
+    seasoningImage: UploadFile = File(...)
 ):
     
     print(f"Received country: {country}")
@@ -39,11 +40,15 @@ async def upload_info(
     os.makedirs(UPLOAD_DIR, exist_ok=True) 
 
     constant_backend_filename = image.filename
+    seasoning_filename = seasoningImage.filename
     file_location = os.path.join(UPLOAD_DIR, constant_backend_filename)
+    seasoning_file_location = os.path.join(UPLOAD_DIR, seasoning_filename)
 
     try:
         with open(file_location, "wb+") as file_object:
             file_object.write(await image.read())
+        with open(seasoning_file_location, "wb+") as file_object:
+            file_object.write(await seasoningImage.read())
 
         print(f"Saved image to: {file_location}")
 
@@ -54,7 +59,10 @@ async def upload_info(
             "country": country,
             "image_name": image.filename,
             "image_size": image.size,
-            "image_location": file_location
+            "image_location": file_location,
+            "seasoning_name": seasoningImage.filename,
+            "seasoning_size": seasoningImage.size,
+            "seasoning_location": seasoning_file_location
         }
     except Exception as e:
         return {"message": f"There was an error uploading the file: {e}"}

@@ -14,7 +14,7 @@ class MealDB:
         self.collection = self.db["meals_by_area"]
 
     def search_meals_by_region_and_ingredients_api(self, region):
-        ingredients_list = detect()
+        ingredients_list = detect("../uploaded_images/fridge_contents_image.jpg") + detect("../uploaded_images/seasoning_contents_image.jpg")
 
         def intersection_for_two(we_have, they_have):
             res = set()
