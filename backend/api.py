@@ -2,17 +2,16 @@ from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from detect.detect_ingredient import detect
 import MealDB
-from dotenv import load_dotenv
-
-
 import os
+from mangum import Mangum  # <- Add this
+
 app = FastAPI()
 
+# CORS for frontend
 origins = [
-    "http://localhost:5173",
-    "localhost:5173"
+    "http://localhost:5173",         # dev
+    "https://<your-amplify-domain>"  # prod
 ]
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,38 +22,26 @@ app.add_middleware(
 )
 
 meal_db = MealDB.MealDB()
-
-user_info = {
-    "country": "France"
-}
-
+user_info = {"country": "France"}
 
 @app.get("/recipe", tags=["recipes"])
 async def get_recipes() -> dict:
-    return { "data": meal_db.search_meals_by_region_and_ingredients_api(user_info["country"]) }
+    return {"data": meal_db.search_meals_by_region_and_ingredients_api(user_info["country"])}
 
 @app.post("/send_info")
 async def upload_info(
     country: str = Form(...),
     image: UploadFile = File(...)
 ):
-    
-    print(f"Received country: {country}")
+    UPLOAD_DIR = "/tmp/uploaded_images"  # Lambda uses /tmp for writable storage
+    os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-    UPLOAD_DIR = "uploaded_images"
-    os.makedirs(UPLOAD_DIR, exist_ok=True) 
-
-    constant_backend_filename = image.filename
-    file_location = os.path.join(UPLOAD_DIR, constant_backend_filename)
-
+    file_location = os.path.join(UPLOAD_DIR, image.filename)
     try:
         with open(file_location, "wb+") as file_object:
             file_object.write(await image.read())
 
-        print(f"Saved image to: {file_location}")
-
         user_info["country"] = country
-
         return {
             "message": "Files uploaded successfully",
             "country": country,
@@ -64,3 +51,6 @@ async def upload_info(
         }
     except Exception as e:
         return {"message": f"There was an error uploading the file: {e}"}
+
+# Lambda handler
+handler = Mangum(app)
