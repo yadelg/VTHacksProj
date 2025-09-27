@@ -12,7 +12,7 @@ function Layout() {
         <div className='navbar'>
             <h2 className="links">
             <Link style={{ color: "white" }} to="/">
-                Home
+                🏠︎
             </Link>
             </h2>
 
