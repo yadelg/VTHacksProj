@@ -86,7 +86,7 @@ class MealDB:
             meal_ingredients = [normalize_ingredient(ing) for ing in meal.get("ingredients", [])]
             have =  intersection_for_two(search_ingredients, meal_ingredients)
             matches = len(have)
-            missing = set(meal_ingredients).difference(set(search_ingredients))
+            missing = difference_for_two(search_ingredients, meal_ingredients)
            
             recipe_data = {
                 "recipe_name": meal.get("name"),
