@@ -43,6 +43,16 @@ class MealDB:
                 if not found:
                     res.add(ingredient)
             return res
+        
+        def inter(we_have, they_have):
+            res = set()
+            for ingredient in we_have:
+                our_last_ing = ingredient.split(" ")[-1]
+                for other_ing in they_have:
+                    their_last_ing = other_ing.split(" ")[-1]
+                    if our_last_ing == their_last_ing:
+                        res.add(ingredient)
+            return res           
 
 
         def normalize_ingredient(ingredient):
