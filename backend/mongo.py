@@ -50,7 +50,8 @@ for area in areas:
                     "name": detail['strMeal'],
                     "id": detail['idMeal'],
                     "thumbnail": detail['strMealThumb'],
-                    "ingredients": ingredients
+                    "ingredients": ingredients,
+                    "recipe" : detail.get("strInstructions", "").strip()
                 })
     
 

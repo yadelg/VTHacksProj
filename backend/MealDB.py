@@ -122,7 +122,8 @@ class MealDB:
                 "image": meal.get("thumbnail"),
                 "matches": matches,
                 "missing": missing,
-                "have": have                      # include image
+                "have": have,
+                "recipe": meal.get("recipe")                      # include image
             }
             filtered_meals.append(recipe_data)
         
