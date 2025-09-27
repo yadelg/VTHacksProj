@@ -1,31 +1,63 @@
-
-
 import { useState } from "react";
 import './UserForm.css'
 
 function UserForm() {
 
     const [country, setCountry] = useState("");
+    const [image, setImage] = useState<File | null>(null);
 
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files.length > 0) {
+            setImage(e.target.files[0])
+        }
+        else {
+            setImage(null);
+        }
+    }
 
+    const handleFormSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+
+        if (!image) {
+            console.warn("No image file inputted")
+            return
+        }
+        
+        const formData = new FormData()
+        formData.append('country', country)
+        formData.append('image', image)
+
+        try {
+            const resp = await fetch('http://localhost:8000/send_info', {
+                method: 'POST',
+                body: formData
+            })
+
+            if (resp.ok) {
+                const result = await resp.json()
+                console.log("Upload success", resp)
+                setCountry('')
+                setImage(null)
+            } else {
+                const err = await resp.json();
+                console.error("Error: ", err)
+            }
+        }
+        catch (err) {
+            console.error("Error uploading: ", err)
+        }
+    }
 
     return (
         <>
 
-        <div className="container">
-
+        <form onSubmit={handleFormSubmit} className="container">
             <h1 className="title">Whats in your fridge?</h1>
-
-
             <div className="ImageUpload">
-
                 <h2> Upload: </h2>
-
-                <input type="file" accept="image/*" />
-
-
+                <input type="file" accept="image/*" onChange={handleImageChange}/>
+                {image && <p>Selected file: {image.name}</p>}
             </div>
-
             <div className="CountrySelect">
                 <h2> Country: </h2>
                 <select value={country} onChange={e => setCountry(e.target.value)}>
@@ -57,38 +89,14 @@ function UserForm() {
                     <option value="Ukranian">Ukraine</option>
                     <option value="Uruguayan">Uruguay</option>
                     <option value="Vietnamese">Vietnam</option>
-
                 </select>
-
-                
-
-
             </div>
-
-
-
-
-
-
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        
+            <button type="submit" className="submit-button">Get Recipes!</button>
+        </form>
         
         </>
 
-
-
-
-
     )
-
-    
 
 }
 export default UserForm

@@ -101,7 +101,7 @@ body {
     content: "•";
     color: var(--accent-color); /* Use accent green for bullets */
     position: absolute;
-    left: -10px; /* ADJUSTED: Moved bullet further to the left (outside initial padding) */
+    left: -10px; /* ADJUSTED: Moved bullet further to the left (outside first padding) */
     top: 0;
     font-size: 1.4em;
     line-height: inherit;
@@ -140,11 +140,11 @@ body {
 
     .recipe-card ul li {
         font-size: 0.95em;
-        padding-left: 15px; /* Responsive adjustment for smaller screens */
+        padding-left: 15px; /* Responsive change for smaller screens */
     }
 
     .recipe-card ul li::before {
-        left: -5px; /* Responsive adjustment for smaller screens */
+        left: -5px; /* Responsive change for smaller screens */
     }
 }
 
