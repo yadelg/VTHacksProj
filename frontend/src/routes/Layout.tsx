@@ -1,4 +1,5 @@
 import { Outlet, Link } from "react-router-dom"
+import './Layout.css'
 
 
 
@@ -8,20 +9,20 @@ function Layout() {
 
         <div>
         <nav>
-        <ul className='navbar'>
-            <li className="links">
+        <div className='navbar'>
+            <h3 className="links">
             <Link style={{ color: "white" }} to="/">
                 Home
             </Link>
-            </li>
+            </h3>
 
-            <li className="links">
+            <h3 className="links">
             <Link style={{ color: "white" }} to="/form">
-                Create A Crewmate
+                Get Started!
             </Link>
-            </li>
+            </h3>
             
-        </ul>
+        </div>
         </nav>
         <Outlet />
     </div>
