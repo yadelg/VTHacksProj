@@ -15,6 +15,19 @@ class MealDB:
 
     def search_meals_by_region_and_ingredients_api(self, region):
         ingredients_list = detect()
+
+        def intersection_for_two(we_have, they_have):
+            res = set()
+            for ingredient in we_have:
+                ing_arr = ingredient.split(" ")
+                for word in ing_arr:
+                    for other_ing in they_have:
+                        for other_word in other_ing.split(" "):
+                            if word == other_word:
+                                res.add(ingredient)
+            return res
+
+
         def normalize_ingredient(ingredient):
             if not ingredient:
                 return ""
@@ -54,9 +67,9 @@ class MealDB:
         print(ingredients_list)
         for meal in meals:
             meal_ingredients = [normalize_ingredient(ing) for ing in meal.get("ingredients", [])]
-            matches = len(set(search_ingredients).intersection(set(meal_ingredients)))
+            have =  intersection_for_two(search_ingredients, meal_ingredients)
+            matches = len(have)
             missing = set(meal_ingredients).difference(set(search_ingredients))
-            have = set(search_ingredients).intersection(set(meal_ingredients))
            
             recipe_data = {
                 "recipe_name": meal.get("name"),
