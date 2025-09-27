@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './UserForm.css'
+import styles from './UserForm.module.css'
 
 function UserForm() {
 
@@ -51,14 +51,14 @@ function UserForm() {
     return (
         <>
 
-        <form onSubmit={handleFormSubmit} className="container">
-            <h1 className="title">Whats in your fridge?</h1>
-            <div className="ImageUpload">
+        <form onSubmit={handleFormSubmit} className={styles.container}>
+            <h1 className={styles.title}>Whats in your fridge?</h1>
+            <div className={styles.ImageUpload}>
                 <h2> Upload: </h2>
                 <input type="file" accept="image/*" onChange={handleImageChange}/>
                 {image && <p>Selected file: {image.name}</p>}
             </div>
-            <div className="CountrySelect">
+            <div className={styles.CountrySelect}>
                 <h2> Country: </h2>
                 <select value={country} onChange={e => setCountry(e.target.value)}>
                     <option value="American">USA</option>
@@ -91,7 +91,7 @@ function UserForm() {
                     <option value="Vietnamese">Vietnam</option>
                 </select>
             </div>
-            <button type="submit" className="submit-button">Get Recipes!</button>
+            <button type="submit" >Get Recipes!</button>
         </form>
         
         </>
