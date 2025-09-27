@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import viteLogo from '/vite.svg'
+import RecipeCard from "./components/RecipeCard"
 import './App.css'
 
 
@@ -24,6 +25,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      
     </>
   )
 }

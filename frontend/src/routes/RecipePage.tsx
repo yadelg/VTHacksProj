@@ -1,7 +1,10 @@
+import RecipeCard from "../components/RecipeCard"
+
+
 function RecipePage() {
     return (
         <div>
-            test
+            <RecipeCard />
         </div>
 
     )
