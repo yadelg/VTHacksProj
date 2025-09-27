@@ -15,6 +15,7 @@ class MealDB:
 
     def search_meals_by_region_and_ingredients_api(self, region):
         ingredients_list = detect()
+
         def normalize_ingredient(ingredient):
             if not ingredient:
                 return ""
@@ -22,7 +23,7 @@ class MealDB:
             cleaned = ingredient.lower()
             cleaned = re.sub(r'[\d/]+', '', cleaned)
 
-            # Remove units (whole words only)
+            # Remove units
             units = r'\b(g|kg|ml|l|tbls|tbs|tsp|cup|cups|can|garnish|oz|lb|teaspoon|tablespoon|tbsp)\b'
             cleaned = re.sub(units, '', cleaned)
 
@@ -38,30 +39,33 @@ class MealDB:
 
             return cleaned.strip()
 
-        """
-        Search meals in a specific region that contain ALL ingredients in ingredients_list.
-        """
+        # Get region meals
         region_doc = self.collection.find_one({"region": region})
-        
         if not region_doc:
             return []
 
         meals = region_doc.get("meals", [])
-        filtered_meals = []
-        
         search_ingredients = [normalize_ingredient(ing) for ing in ingredients_list]
-    
+
+        scored_meals = []
+
         for meal in meals:
             meal_ingredients = [normalize_ingredient(ing) for ing in meal.get("ingredients", [])]
 
-            if all(ing in meal_ingredients for ing in search_ingredients):
-                recipe_data = {
-                "recipe_name": meal.get("name"),
-                "origin": region,
-                "ingredients": meal.get("ingredients", []),  # keep original ingredients for display
-                "image": meal.get("thumbnail")  # include image
-                }
-                filtered_meals.append(recipe_data)
+            # Count matches between detected and meal ingredients
+            matches = sum(1 for ing in search_ingredients if ing in meal_ingredients)
 
-        return filtered_meals
+            if matches > 0:  # only keep if there's at least one match
+                scored_meals.append({
+                    "recipe_name": meal.get("name"),
+                    "origin": region,
+                    "ingredients": meal.get("ingredients", []),
+                    "image": meal.get("thumbnail"),
+                    "match_score": matches
+                })
+
+        # Sort by match_score (descending) and keep top 3
+        top_matches = sorted(scored_meals, key=lambda x: x["match_score"], reverse=True)[:3]
+
+        return top_matches
     
