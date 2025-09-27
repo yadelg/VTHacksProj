@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom"
 
 const countryFlags: { [key: string]: string } = {
     American: '🇺🇸',
@@ -42,6 +43,8 @@ const FridgeForm: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [message, setMessage] = useState<Message>({ type: '', text: '' });
 
+    const navigate = useNavigate();
+
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
             setImage(e.target.files[0]);
@@ -64,7 +67,8 @@ const FridgeForm: React.FC = () => {
 
         const formData = new FormData();
         formData.append('country', country);
-        formData.append('image', image);
+        const constantFilename = "fridge_contents_image.jpg"; // Define your constant filename
+        formData.append('image', image, constantFilename); // Append the file with the desired filename
 
         try {
             const resp = await fetch('http://localhost:8000/send_info', {
@@ -73,10 +77,16 @@ const FridgeForm: React.FC = () => {
             });
 
             if (resp.ok) {
-                // const result = await resp.json(); // Assuming you don't need the result for display here
+                const result = await resp.json(); // Assuming you don't need the result for display here
                 setMessage({ type: 'success', text: "Upload successful! Getting your recipes..." });
                 setCountry('');
                 setImage(null);
+                //const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+                // if (fileInput) {
+                //     fileInput.value = '';
+                // }
+                navigate('/recipes');
+
             } else {
                 const err = await resp.json();
                 setMessage({ type: 'error', text: `Error: ${err.message || 'Something went wrong.'}` });
@@ -234,16 +244,15 @@ const FridgeForm: React.FC = () => {
                         ))}
                     </select>
                 </div>
-
-                <button
-                    type="submit"
-                    style={buttonStyles}
-                    onMouseEnter={(e) => { if (!isLoading) Object.assign(e.currentTarget.style, buttonHoverStyles); }}
-                    onMouseLeave={(e) => { if (!isLoading) Object.assign(e.currentTarget.style, buttonStyles); }}
-                    disabled={isLoading}
-                >
-                    {isLoading ? 'Getting Recipes...' : 'Get Recipes!'}
-                </button>
+                    <button
+                        type="submit"
+                        style={buttonStyles}
+                        onMouseEnter={(e) => { if (!isLoading) Object.assign(e.currentTarget.style, buttonHoverStyles); }}
+                        onMouseLeave={(e) => { if (!isLoading) Object.assign(e.currentTarget.style, buttonStyles); }}
+                        disabled={isLoading}
+                    >
+                        {isLoading ? 'Getting Recipes...' : 'Get Recipes!'}
+                    </button>
             </form>
         </div>
     );

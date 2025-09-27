@@ -4,7 +4,8 @@ import './RecipeCard.css';
 interface Recipe {
   recipe_name: string,
   origin: string,
-  ingredients: string[]
+  ingredients: string[],
+  image: string
 }
 
 const RecipeContext = createContext({
