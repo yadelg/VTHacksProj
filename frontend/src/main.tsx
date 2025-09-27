@@ -4,6 +4,7 @@ import App from './App.tsx'
 import Layout from './routes/Layout.tsx'
 import UserForm from './routes/UserForm.tsx'
 import RecipePage from './routes/RecipePage.tsx'
+import './index.css';
 
 
 

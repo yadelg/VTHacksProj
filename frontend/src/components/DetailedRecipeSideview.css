@@ -48,19 +48,20 @@
 /* Sideview panel itself */
 .sideview {
     position: fixed;
-    top: 0;
+    top: 0px;
     right: -70vw;
-    /* hidden off screen */
     width: 70vw;
-    /* way wider */
     max-width: 900px;
     height: 100%;
     background: #fff;
     box-shadow: -3px 0 6px rgba(0, 0, 0, 0.2);
-    z-index: 2000;
+    z-index: 4000;
     transition: right 0.3s ease;
     overflow-y: auto;
+    
 }
+
+
 
 .sideview.open {
     right: 0;
