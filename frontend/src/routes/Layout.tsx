@@ -10,19 +10,19 @@ function Layout() {
         <div>
         <nav>
         <div className='navbar'>
-            <h3 className="links">
+            <h2 className="links">
             <Link style={{ color: "white" }} to="/">
                 Home
             </Link>
-            </h3>
+            </h2>
 
             <img className="logo" src="logo/logo.png" alt="logo"/>
 
-            <h3 className="links">
+            <h2 className="links">
             <Link style={{ color: "white" }} to="/form">
                 Get Started!
             </Link>
-            </h3>
+            </h2>
             
         </div>
         </nav>

@@ -12,4 +12,4 @@ function RecipePage() {
 }
 
 
-export default RecipePage
+export default RecipePage;
