@@ -52,7 +52,24 @@ class MealDB:
                     their_last_ing = other_ing.split(" ")[-1]
                     if our_last_ing == their_last_ing:
                         res.add(ingredient)
-            return res           
+            return res       
+
+        def diff(they_have, we_have):
+            res = set()
+            # collect last words from they_have
+            they_last_words = {other_ing.split()[-1] for other_ing in they_have if other_ing.split()}
+
+            for ingredient in we_have:
+                words = ingredient.split()
+                if not words:  # skip empty
+                    continue
+                last_word = words[-1]
+
+                if last_word not in they_last_words:
+                    res.add(ingredient)
+
+            return res
+
 
 
         def normalize_ingredient(ingredient):
@@ -94,9 +111,9 @@ class MealDB:
         print(ingredients_list)
         for meal in meals:
             meal_ingredients = [normalize_ingredient(ing) for ing in meal.get("ingredients", [])]
-            have =  intersection_for_two(search_ingredients, meal_ingredients)
+            have =  inter(search_ingredients, meal_ingredients)
             matches = len(have)
-            missing = difference_for_two(search_ingredients, meal_ingredients)
+            missing = diff(search_ingredients, meal_ingredients)
            
             recipe_data = {
                 "recipe_name": meal.get("name"),
