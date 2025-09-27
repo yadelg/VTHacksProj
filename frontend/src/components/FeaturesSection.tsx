@@ -55,7 +55,7 @@ const FeaturesSection: React.FC = () => {
         flag={<IndiaFlag />} 
         title="Indian" 
         description="Aromatic spices and complex curries." 
-        imageUrl="https://images.unsplash.com/photo-1587574293340-e0011c4e3b97?q=80&w=2940&auto=format&fit=crop"
+        imageUrl="logo/biryani.jpg"
       />
     </div>
   );
