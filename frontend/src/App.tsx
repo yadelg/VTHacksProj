@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import viteLogo from '/vite.svg'
 import RecipeCard from "./components/RecipeCard"
-import './App.css'
+import styles from './App.module.css'; 
+import { Link } from 'react-router'
 
 
 
@@ -9,22 +9,29 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        
+      <div className={styles.header}>
+
+        <h1>Welcome to GlobalEats!</h1>
+        <h2>Discover recipes from around the world based on what you have in your fridge!</h2>
+
+
+
+
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
+
+
+      <div className={styles.container}>
+
+        <Link to="/form">
+          <button className={styles.GetStartedButton}>Get Started!</button>
+        </Link>
         
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      
+
+
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
       
     </>
   )

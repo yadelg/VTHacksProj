@@ -1,0 +1,113 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #ece9e6, #ffffff); /* Light gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+/* Container for the entire form */
+.container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+}
+
+/* Title Styling */
+.title {
+    color: #4CAF50; /* A fresh green */
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Section Headings */
+h2 {
+    color: #555;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    font-weight: 600;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Image Upload Section */
+.ImageUpload {
+    margin-bottom: 30px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px dashed #ccc;
+}
+
+.ImageUpload input[type="file"] {
+    display: block;
+    margin: 15px auto 0 auto;
+    padding: 10px;
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    background-color: #e8f5e9; /* Lighter green background for input */
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    width: calc(100% - 20px); /* Adjust width to fit padding */
+}
+
+.ImageUpload input[type="file"]:hover {
+    background-color: #dcedc8; /* Even lighter green on hover */
+    border-color: #388E3C; /* Darker green border on hover */
+}
+
+/* Country Select Section */
+.CountrySelect {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.CountrySelect select {
+    width: calc(100% - 20px); /* Adjust width to fit padding */
+    padding: 12px 15px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 1em;
+    color: #333;
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%00-13-5.4H18.4c-6.5%200-12.3%203.2-16.1%208.1-3.8%204.9-4.9%2011-3.8%2017.2l128%20164.8c4.6%205.9%2011.6%209.6%2019.2%209.6s14.6-3.7%2019.2-9.6l128-164.8c3.9-6.2%202.7-12.3-1.1-17.2z%22%2F%3E%3C%2Fsvg%3E'); /* Custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 10px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.CountrySelect select:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3); /* Green focus ring */
+}
+
+/* Option styling (optional, but can make options look better) */
+.CountrySelect option {
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+}
