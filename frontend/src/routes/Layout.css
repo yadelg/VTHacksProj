@@ -16,11 +16,17 @@
 .logo {
     height: 350px;
     width: auto;
-    padding-left: 90px;
+    padding-left: 10px;
 }
 
-.links {
+.link {
     font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.home {
+    font-size: 40px;
     font-weight: bold;
     color: white;
 }

@@ -31,9 +31,9 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ flag, title, description, ima
       <div className="p-4 text-black">
         <div className="flex items-center gap-2 mb-2">
           <div className="w-6 h-4 flex-shrink-0">{flag}</div>
-         <h3 className="text-xl font-bold text-white">{title}</h3>
+         <h3 className="text-xl font-bold text-white font-serif">{title}</h3>
         </div>
-      <p className="text-sm text-white">{description}</p>
+      <p className="text-sm text-white font-serif">{description}</p>
       </div>
 
     </Link>

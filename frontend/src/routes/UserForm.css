@@ -162,7 +162,7 @@
 .assistant-bubble::after {
   content: "";
   position: absolute;
-  bottom: -8px;
+  bottom: -16px;
   left: 20px;
   border-width: 8px;
   border-style: solid;
@@ -171,8 +171,8 @@
 }
 
 .fridge-image {
-  width: 90px;               /* size */
-  height: 90px;              /* force square for perfect circle */
+  width: 150px;               /* size */
+  height: 150px;              /* force square for perfect circle */
   object-fit: cover;         /* crop without stretching */
   border-radius: 50%;        /* makes it circular */
   cursor: pointer;

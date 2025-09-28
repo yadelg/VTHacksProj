@@ -41,7 +41,7 @@ const App: React.FC = () => {
                       className="group mt-6 relative overflow-hidden text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 animate-fade-in-up bg-green-900 animate-pulse-shadow"
                       style={{ animationDelay: '1s' }}
                     >
-                      <span className="inline-block transition-transform duration-300 ease-in-out group-hover:-translate-x-4">
+                      <span className="font-sans inline-block transition-transform duration-300 ease-in-out group-hover:-translate-x-4 "> 
                         Get Started!
                       </span>
                       <span className="absolute right-4 top-1/2 -translate-y-1/2 translate-x-8 opacity-0 transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:opacity-100 text-2xl">
