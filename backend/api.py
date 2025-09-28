@@ -7,7 +7,7 @@ import os
 app = FastAPI()
 
 origins = [
-    "https://main.d3fj3wnmzrwu96.amplifyapp.com/"
+    "https://main.d3fj3wnmzrwu96.amplifyapp.com"
 ]
 
 app.add_middleware(
