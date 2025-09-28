@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import re
 import os
 from dotenv import load_dotenv
-from detect.detect_ingredient import detect
+from needed.detect_ingredient import detect
 
 load_dotenv()
 database = os.environ.get("database")
