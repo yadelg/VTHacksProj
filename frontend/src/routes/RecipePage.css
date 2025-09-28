@@ -11,8 +11,8 @@
   justify-content: center;
   align-items: center;
 
-  background: rgba(50, 50, 50, 0.9); /* dark gray */
-  color: #fff;
+  background: #EBE2E1; /* dark gray */
+  color: #322a2a;
   text-align: center;
 
   z-index: 2000;
@@ -24,7 +24,7 @@
   width: 70px;
   height: 70px;
   border: 8px solid rgba(255, 255, 255, 0.2);
-  border-top: 8px solid #fff;
+  border-top: 8px solid #453232;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1.5rem;
