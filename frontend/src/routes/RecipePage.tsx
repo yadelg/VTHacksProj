@@ -14,16 +14,24 @@ function RecipePage() {
         setLoading(true);
         try {
             const response = await fetch('https://unproofread-unpopularized-dianne.ngrok-free.dev/recipe');
-            if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
-            const data = await response.json();
-            console.log('Parsed data:', data);
-            setRecipes(data.data);
+            const text = await response.text(); // read once
+            console.log('Raw response text (first 200 chars):', text.slice(0, 200));
+
+            // Parse only if it looks like JSON
+            if (text.trim().startsWith('{') || text.trim().startsWith('[')) {
+                const data = JSON.parse(text);
+                console.log('Parsed data:', data);
+                setRecipes(data.data);
+            } else {
+                console.error('Server did not return JSON, got:', text);
+            }
         } catch (err) {
             console.error('Error fetching recipes:', err);
         } finally {
             setLoading(false);
         }
     };
+
 
     useEffect(() => {
         fetchRecipes();
