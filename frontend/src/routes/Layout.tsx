@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom"
 import './Layout.css'
-
+import { HorizontalFlagStrip } from '../components/FlagBorder';
 
 
 function Layout() {
@@ -9,6 +9,7 @@ function Layout() {
 
         <div>
         <nav>
+
         <div className='navbar'>
             <h2 className="links">
                 <Link style={{ color: "white" }} to="/">
@@ -20,12 +21,15 @@ function Layout() {
 
             <h2 className="links">
                 <Link style={{ color: "white" }} to="/form">
-                    What We Do!
+                    Dive In!
                 </Link>
             </h2>
             
         </div>
         </nav>
+
+        <HorizontalFlagStrip />
+
         <Outlet />
     </div>
 

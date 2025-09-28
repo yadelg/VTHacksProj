@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 0rem;
-  background-color: #EBE2E1;
+  background-color: white;
   min-height: 90vh;     
 }
 
@@ -132,3 +132,55 @@
   background-color: #e0e0e0;
 }
 
+
+
+.assistant-container {
+  position: fixed;
+  bottom: 20px;       /* keep everything pinned to bottom */
+  left: 20px;         /* distance from left */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 1000;
+}
+
+.assistant-bubble {
+  background: #fff;
+  color: #333;
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  margin-bottom: 10px;
+  max-width: 240px;      /* keeps bubble a nice readable size */
+  font-size: 14px;       /* adjust for readability */
+  line-height: 1.4;
+  position: relative;
+  word-wrap: break-word;
+}
+
+/* little arrow */
+.assistant-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 20px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+}
+
+.fridge-image {
+  width: 90px;               /* size */
+  height: 90px;              /* force square for perfect circle */
+  object-fit: cover;         /* crop without stretching */
+  border-radius: 50%;        /* makes it circular */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* optional soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fridge-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}

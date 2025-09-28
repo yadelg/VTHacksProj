@@ -208,6 +208,7 @@ const FridgeForm: React.FC = () => {
                     </select>
                 </div>
 
+                
                 <button
                     type="submit"
                     className="fridge-button"
@@ -216,6 +217,16 @@ const FridgeForm: React.FC = () => {
                     {isLoading ? 'Getting Recipes...' : 'Get Recipes!'}
                 </button>
             </form>
+
+            <div className="assistant-container">
+                <div className="assistant-bubble">
+                    Welcome to GlobalEats! 🍽️  
+                    Discover recipes from around the world!
+                    Your culinary adventure starts here. 😋
+                </div>
+                <img src="logo/assistant.png" alt="assistant" className="fridge-image" />
+            </div>
+
         </div>
     );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import AnimatedHeroText from './components/AnimatedHeroText';
 import FeaturesSection from './components/FeaturesSection';
-import { HorizontalFlagStrip } from './components/FlagBorder';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -20,7 +19,7 @@ const App: React.FC = () => {
       <div className="relative flex-grow flex flex-col px-6 md:px-6 w-full max-w-7xl mx-auto">
         {/* Bordered Main Content Area */}
         <div className="flex-grow flex flex-col min-h-0">
-          <HorizontalFlagStrip />
+          
 
           <div className="flex-grow flex min-h-0">
             <main className="flex-grow flex flex-col justify-center p-4 md:p-0">
