@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UserForm.css';
-import { HorizontalFlagStrip } from '../components/FlagBorder';
 
 const countryFlags: { [key: string]: string } = {
     American: '🇺🇸',
