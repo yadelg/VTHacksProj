@@ -34,7 +34,7 @@ const App: React.FC = () => {
                     className="text-3xl sm:text-4xl text-black animate-fade-in-up font-cursive font-bold"
                     style={{ animationDelay: '0.5s' }}
                   >
-                    𝒴ℴ𝓊𝓇 𝒫𝒶𝓁𝒶𝓉ℯ with <img src="../logo/globaleats.png" width="20px" height="20px"/>
+                    𝒴ℴ𝓊𝓇 𝒫𝒶𝓁𝒶𝓉ℯ with <img src="../logo/globaleats.png" />
                   </h2>
                   
                   <Link to="/form">

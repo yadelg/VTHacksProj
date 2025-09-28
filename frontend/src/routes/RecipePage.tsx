@@ -13,7 +13,7 @@ function RecipePage() {
     const fetchRecipes = async () => {
         setLoading(true)
         try {
-            const response = await fetch('http://localhost:8000/recipe');
+            const response = await fetch('https://unproofread-unpopularized-dianne.ngrok-free.dev/recipe');
             const data = await response.json();
             setRecipes(data.data);
         } catch (err) {
@@ -27,9 +27,6 @@ function RecipePage() {
     useEffect(() => {
         fetchRecipes();
     }, []);
-
-
-
 
     return (
         <div className="recipe-grid">

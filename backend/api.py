@@ -6,10 +6,9 @@ import os
 
 app = FastAPI()
 
-# CORS for frontend
 origins = [
-    "http://localhost:5173",         # dev
-    "localhost:5173"  # prod
+    "http://localhost:5173",
+    "localhost:5173"
 ]
 
 app.add_middleware(
