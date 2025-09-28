@@ -15,6 +15,12 @@ function RecipePage() {
         try {
             const response = await fetch('https://unproofread-unpopularized-dianne.ngrok-free.dev/recipe');
             const data = await response.json();
+            // Log what you actually got:
+            const text = await response.text();
+            console.log('Raw response:', text);
+
+            // Try to parse it only if it looks like JSON
+            const testing = JSON.parse(text);
             setRecipes(data.data);
         } catch (err) {
             console.error('Error fetching recipes:', err);
