@@ -11,23 +11,17 @@ function RecipePage() {
     const [loading, setLoading] = useState<boolean>(true);
 
     const fetchRecipes = async () => {
-        setLoading(true)
+        setLoading(true);
         try {
             const response = await fetch('https://unproofread-unpopularized-dianne.ngrok-free.dev/recipe');
+            if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
             const data = await response.json();
-            // Log what you actually got:
-            const text = await response.text();
-            console.log('Raw response:', text);
-
-            // Try to parse it only if it looks like JSON
-            const testing = JSON.parse(text);
-            console.log(testing);
+            console.log('Parsed data:', data);
             setRecipes(data.data);
         } catch (err) {
             console.error('Error fetching recipes:', err);
-        }
-        finally {
-            setLoading(false)
+        } finally {
+            setLoading(false);
         }
     };
 
