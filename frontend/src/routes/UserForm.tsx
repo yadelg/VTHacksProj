@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UserForm.css';
+import { HorizontalFlagStrip } from '../components/FlagBorder';
 
 const countryFlags: { [key: string]: string } = {
     American: '🇺🇸',
@@ -105,7 +106,18 @@ const FridgeForm: React.FC = () => {
     };
 
     return (
+
+        
+
+        
+
+
+        
+
+        
         <div className="fridge-wrapper">
+            
+            
             <form onSubmit={handleFormSubmit} className="fridge-form">
                 <h1 className="fridge-title">What's in Your Fridge? 🍳</h1>
 

@@ -3,8 +3,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 0rem;
   background-color: #EBE2E1;
+  min-height: 90vh;     
 }
 
 .fridge-file-name {
@@ -33,6 +34,8 @@
 .fridge-section {
   margin: 1.2rem 0;
   text-align: left;
+  
+
 }
 
 /* Labels */
@@ -128,3 +131,4 @@
   border-color: #007bff;
   background-color: #e0e0e0;
 }
+
