@@ -11,7 +11,7 @@ function Layout() {
         <nav>
         <div className='navbar'>
             <h2 className="links">
-                <Link style={{ color: "white" }} to="/">
+                <Link style={{ color: "red" }} to="/">
                     🏠︎ 
                 </Link>
             </h2>
@@ -19,7 +19,7 @@ function Layout() {
             <img className="logo" src="logo/logo.png" alt="logo"/>
 
             <h2 className="links">
-                <Link style={{ color: "white" }} to="/form">
+                <Link style={{ color: "red" }} to="/form">
                     Get Started!
                 </Link>
             </h2>
