@@ -104,18 +104,6 @@ const FridgeForm: React.FC = () => {
         }
     };
 
-    const getFlagDataURL = (flag: string) => {
-        const canvas = document.createElement('canvas');
-        canvas.width = 20;
-        canvas.height = 15;
-        const ctx = canvas.getContext('2d');
-        if (ctx) {
-            ctx.font = '15px sans-serif';
-            ctx.fillText(flag, 0, 13);
-        }
-        return canvas.toDataURL();
-    };
-
     return (
         <div className="fridge-wrapper">
             <form onSubmit={handleFormSubmit} className="fridge-form">

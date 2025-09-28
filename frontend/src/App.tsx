@@ -34,9 +34,9 @@ const App: React.FC = () => {
                     className="text-3xl sm:text-4xl text-black animate-fade-in-up font-cursive font-bold"
                     style={{ animationDelay: '0.5s' }}
                   >
-                    𝒴ℴ𝓊𝓇 𝒫𝒶𝓁𝒶𝓉ℯ
+                    𝒴ℴ𝓊𝓇 𝒫𝒶𝓁𝒶𝓉ℯ with <img src="../logo/globaleats.png" width="20px" height="20px"/>
                   </h2>
-
+                  
                   <Link to="/form">
                     <button
                       className="group mt-6 relative overflow-hidden text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 animate-fade-in-up bg-black animate-pulse-shadow"
