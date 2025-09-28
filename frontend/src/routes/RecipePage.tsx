@@ -21,6 +21,7 @@ function RecipePage() {
 
             // Try to parse it only if it looks like JSON
             const testing = JSON.parse(text);
+            console.log(testing);
             setRecipes(data.data);
         } catch (err) {
             console.error('Error fetching recipes:', err);
