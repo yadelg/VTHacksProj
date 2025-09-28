@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UserForm.css';
+import { useParams} from 'react-router-dom'
+import { useEffect } from 'react';
 
 const countryFlags: { [key: string]: string } = {
     American: '🇺🇸',
@@ -33,6 +35,9 @@ const countryFlags: { [key: string]: string } = {
     Vietnamese: '🇻🇳',
 };
 
+
+
+
 interface Message {
     type: 'success' | 'error' | '';
     text: string;
@@ -44,6 +49,19 @@ const FridgeForm: React.FC = () => {
     const [country, setCountry] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [message, setMessage] = useState<Message>({ type: '', text: '' });
+
+    const { example } = useParams<{ example?: string }>();
+
+    if (example){
+        useEffect(() => {
+        setCountry(example ?? null);
+    }, [example]);
+        
+    }
+
+    
+
+    
 
     const navigate = useNavigate();
 
@@ -182,9 +200,9 @@ const FridgeForm: React.FC = () => {
 
                     >
                         <option value="">-- Choose a country --</option>
-                        {Object.entries(countryFlags).map(([cuisine, flag]) => (
-                            <option key={cuisine} value={cuisine}>
-                                {flag} {cuisine}
+                        {Object.entries(countryFlags).map(([country, flag]) => (
+                            <option key={country} value={country}>
+                                {flag} {country}
                             </option>
                         ))}
                     </select>

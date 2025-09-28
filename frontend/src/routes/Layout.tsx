@@ -20,7 +20,7 @@ function Layout() {
 
             <h2 className="links">
                 <Link style={{ color: "red" }} to="/form">
-                    Get Started!
+                    What We Do
                 </Link>
             </h2>
             

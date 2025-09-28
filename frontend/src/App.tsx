@@ -15,7 +15,7 @@ const App: React.FC = () => {
     };
   }, []);
   return (
-    <div className="bg-red-100 text-black min-h-screen flex flex-col font-sans ">
+    <div className="bg-red-100 text-white min-h-screen flex flex-col font-sans ">
 
       {/* Padded Content Wrapper */}
       <div className="relative flex-grow flex flex-col px-6 md:px-6 w-full max-w-7xl mx-auto">
@@ -24,17 +24,18 @@ const App: React.FC = () => {
           <HorizontalFlagStrip />
 
           <div className="flex-grow flex min-h-0">
-            <main className="flex-grow flex flex-col justify-center p-4 md:p-6">
+            <main className="flex-grow flex flex-col justify-center p-4 md:p-0">
               <section className="container mx-auto w-full flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-16">
                 
                 {/* Left Column: Hero Text */}
                 <div className="w-full lg:w-1/2 max-w-2xl text-center lg:text-left">
                   <AnimatedHeroText />
                   <h2
-                    className="text-3xl sm:text-4xl text-black animate-fade-in-up font-cursive font-bold"
+                    className="text-3xl sm:text-4xl text-black animate-fade-in-up font-cursive font-bold flex flex-wrap items-center justify-center lg:justify-start gap-2"
                     style={{ animationDelay: '0.5s' }}
                   >
-                    𝒴ℴ𝓊𝓇 𝒫𝒶𝓁𝒶𝓉ℯ with <img src="../logo/globaleats.png" />
+                  𝒴ℴ𝓊𝓇 𝒫𝒶𝓁𝒶𝓉ℯ 𝓌𝒾𝓉𝒽
+                    <img src="../logo/globaleats.png" className="inline-block max-w-33 h-auto " />
                   </h2>
                   
                   <Link to="/form">
@@ -53,7 +54,7 @@ const App: React.FC = () => {
                 </div>
 
                 {/* Right Column: Features Grid */}
-                <div className="w-full lg:w-1/2 max-w-2xl">
+                <div className="w-full lg:w-1/1.5 max-w-2xl">
                   <FeaturesSection />
                 </div>
 

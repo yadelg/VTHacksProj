@@ -11,19 +11,22 @@ import './index.css';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
-  <Routes>
+
+    <Routes>
       <Route path="/" element={<Layout />}>
 
         <Route index element={<App />} />
 
-        <Route path="/form" element={<UserForm />} />
+        <Route path="/form/:example?" element={<UserForm />} />
 
         <Route path="/recipes" element={< RecipePage/>} />
+
+
         
       </Route>
 
       
-  </Routes>
+    </Routes>
 </BrowserRouter>
 )
 
