@@ -15,7 +15,7 @@ const App: React.FC = () => {
     };
   }, []);
   return (
-    <div className="bg-white text-black min-h-screen flex flex-col font-sans ">
+    <div className="bg-red-100 text-black min-h-screen flex flex-col font-sans ">
 
       {/* Padded Content Wrapper */}
       <div className="relative flex-grow flex flex-col px-6 md:px-6 w-full max-w-7xl mx-auto">
@@ -34,7 +34,7 @@ const App: React.FC = () => {
                     className="text-3xl sm:text-4xl text-black animate-fade-in-up font-cursive font-bold"
                     style={{ animationDelay: '0.5s' }}
                   >
-                    Your Palate
+                    𝒴ℴ𝓊𝓇 𝒫𝒶𝓁𝒶𝓉ℯ
                   </h2>
 
                   <Link to="/form">
@@ -43,7 +43,7 @@ const App: React.FC = () => {
                       style={{ animationDelay: '1s' }}
                     >
                       <span className="inline-block transition-transform duration-300 ease-in-out group-hover:-translate-x-4">
-                        Get Started
+                        Get Started!
                       </span>
                       <span className="absolute right-4 top-1/2 -translate-y-1/2 translate-x-8 opacity-0 transition-all duration-300 ease-in-out group-hover:translate-x-0 group-hover:opacity-100 text-2xl">
                         😋

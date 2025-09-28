@@ -3,12 +3,27 @@ import { ItalyFlag } from './icons/ItalyFlag';
 import { JapanFlag } from './icons//JapanFlag';
 import { MexicoFlag } from './icons/MexicoFlag';
 import { IndiaFlag } from './icons//IndiaFlag';
+import { GermanyFlag } from './icons/GermanyFlag';
+import { FranceFlag } from './icons/FranceFlag';
+import { BrazilFlag } from './icons/BrazilFlag';
+import { CanadaFlag } from './icons/CanadaFlag';
+import { IcelandFlag } from './icons/IcelandFlag';
+import { SenegalFlag } from './icons/SenegalFlag';
+
+
 
 const flagComponents = [
     MexicoFlag,
     JapanFlag,
     ItalyFlag,
     IndiaFlag,
+    GermanyFlag,
+    FranceFlag,
+    BrazilFlag,
+    CanadaFlag,
+    IcelandFlag,
+    SenegalFlag
+
 ];
 
 // A single flag element wrapper
