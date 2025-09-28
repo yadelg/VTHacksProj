@@ -1,18 +1,18 @@
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
-from detect.detect_ingredient import detect
 import MealDB
 import os
 
 app = FastAPI()
 
 origins = [
-    "https://main.d3fj3wnmzrwu96.amplifyapp.com"
+    "http://localhost:5173",         # dev
+    "localhost:5173"  # prod
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]

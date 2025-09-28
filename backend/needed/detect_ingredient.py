@@ -3,7 +3,7 @@ from google.genai import types
 from PIL import Image
 import json
 import os
-from yolo_split_predict import split_and_predict
+from needed.yolo_split_predict import split_and_predict
 import re
 
 from dotenv import load_dotenv
@@ -47,7 +47,7 @@ def detect(path):
     # --- 2. Prompt for Ingredients ---
     prompt = """
     Detect and list all distinct food ingredients present in the image.
-    Return ONLY a JSON array of objects with the key "ingredient_name". Remove unecessary characteristics/detail, keep it one word and only two if it creates major difference
+    Return ONLY a JSON array of objects with the key "ingredient_name". Remove unecessary characteristics/detail
     such as ingredient quantity or color. 
 
     Example:
@@ -160,6 +160,6 @@ def detect(path):
 
     return detected_ingredients
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-TEST_IMAGE = os.path.join(BASE_DIR, "../uploaded_images/fridge_contents_image.jpg") 
-detect(TEST_IMAGE)
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# TEST_IMAGE = os.path.join(BASE_DIR, "../uploaded_images/fridge_contents_image.jpg") 
+# detect(TEST_IMAGE)

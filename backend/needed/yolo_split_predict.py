@@ -2,7 +2,7 @@ from ultralytics import YOLO
 from PIL import Image
 import numpy as np
 import os
-from color_detector import detect_color
+from needed.color_detector import detect_color
 
 # -------------------------------
 # Paths
@@ -55,11 +55,11 @@ def split_and_predict(image_path, pad=10):
 
     return all_ingredients
 
-# -------------------------------
-# Example usage
-# -------------------------------
-if __name__ == "__main__":
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__)) 
-    TEST_IMAGE = os.path.join(BASE_DIR, "fridge_contents_image.jpg") 
-    uploaded_image = "backend/needed/fridge_contents_image.jpg"
-    ingredient_lists = split_and_predict(TEST_IMAGE)
+# # -------------------------------
+# # Example usage
+# # -------------------------------
+# if __name__ == "__main__":
+#     BASE_DIR = os.path.dirname(os.path.abspath(__file__)) 
+#     TEST_IMAGE = os.path.join(BASE_DIR, "fridge_contents_image.jpg") 
+#     uploaded_image = "backend/needed/fridge_contents_image.jpg"
+#     ingredient_lists = split_and_predict(TEST_IMAGE)
