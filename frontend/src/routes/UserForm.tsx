@@ -105,7 +105,18 @@ const FridgeForm: React.FC = () => {
     };
 
     return (
+
+        
+
+        
+
+
+        
+
+        
         <div className="fridge-wrapper">
+            
+            
             <form onSubmit={handleFormSubmit} className="fridge-form">
                 <h1 className="fridge-title">What's in Your Fridge? 🍳</h1>
 
