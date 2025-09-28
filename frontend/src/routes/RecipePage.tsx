@@ -1,4 +1,3 @@
-// src/pages/RecipePage.tsx
 import { useEffect, useState } from 'react';
 import RecipeCard, { Recipe } from '../components/RecipeCard';
 import './RecipePage.css';
@@ -11,31 +10,25 @@ function RecipePage() {
     const [loading, setLoading] = useState<boolean>(true);
 
     const fetchRecipes = async () => {
-        setLoading(true);
+        setLoading(true)
         try {
-            const response = await fetch('https://unproofread-unpopularized-dianne.ngrok-free.dev/recipe');
-            const text = await response.text(); // read once
-            console.log('Raw response text (first 200 chars):', text.slice(0, 200));
-
-            // Parse only if it looks like JSON
-            if (text.trim().startsWith('{') || text.trim().startsWith('[')) {
-                const data = JSON.parse(text);
-                console.log('Parsed data:', data);
-                setRecipes(data.data);
-            } else {
-                console.error('Server did not return JSON, got:', text);
-            }
+            const response = await fetch('http://localhost:8000/recipe');
+            const data = await response.json();
+            setRecipes(data.data);
         } catch (err) {
             console.error('Error fetching recipes:', err);
-        } finally {
-            setLoading(false);
+        }
+        finally {
+            setLoading(false)
         }
     };
-
 
     useEffect(() => {
         fetchRecipes();
     }, []);
+
+
+
 
     return (
         <div className="recipe-grid">

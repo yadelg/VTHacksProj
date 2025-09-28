@@ -82,7 +82,7 @@ const FridgeForm: React.FC = () => {
         formData.append('seasoningImage', seasoningImage, 'seasoning_contents_image.jpg');
 
         try {
-            const resp = await fetch('https://unproofread-unpopularized-dianne.ngrok-free.dev/send_info', {
+            const resp = await fetch('http://localhost:8000/send_info', {
                 method: 'POST',
                 body: formData,
             });
@@ -106,14 +106,6 @@ const FridgeForm: React.FC = () => {
 
     return (
 
-        
-
-        
-
-
-        
-
-        
         <div className="fridge-wrapper">
             
             
