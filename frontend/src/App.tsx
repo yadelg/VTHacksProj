@@ -4,7 +4,6 @@ import FeaturesSection from './components/FeaturesSection';
 import { HorizontalFlagStrip } from './components/FlagBorder';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import './App.css';
 
 const App: React.FC = () => {
 
@@ -15,7 +14,7 @@ const App: React.FC = () => {
     };
   }, []);
   return (
-    <div className="bg-red-100 text-white min-h-screen flex flex-col font-sans ">
+    <div className="bg-white text-black min-h-screen flex flex-col font-sans ">
 
       {/* Padded Content Wrapper */}
       <div className="relative flex-grow flex flex-col px-6 md:px-6 w-full max-w-7xl mx-auto">
@@ -40,7 +39,7 @@ const App: React.FC = () => {
                   
                   <Link to="/form">
                     <button
-                      className="group mt-6 relative overflow-hidden text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 animate-fade-in-up bg-black animate-pulse-shadow"
+                      className="group mt-6 relative overflow-hidden text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 animate-fade-in-up bg-green-900 animate-pulse-shadow"
                       style={{ animationDelay: '1s' }}
                     >
                       <span className="inline-block transition-transform duration-300 ease-in-out group-hover:-translate-x-4">

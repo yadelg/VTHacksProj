@@ -4,7 +4,7 @@
     left: 0;
     width: 100vw;
     height: 100px;
-    background-color: #FFF5E1; /* Tailwind gray-300 */
+    background-color: #27272a; /* Tailwind's green-700 */
     display: flex;
     align-items: center;
     justify-content: space-between;

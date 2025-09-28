@@ -14,7 +14,7 @@ interface FeatureCardProps {
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ flag, title, description, imageUrl, nationality}) => (
-  <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden group border border-gray-200">
+  <div className="bg-neutral-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden group border border-gray-200">
     <Link to={`/form/${nationality}`}>
       <div className="overflow-hidden h-32">
 
@@ -31,9 +31,9 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ flag, title, description, ima
       <div className="p-4 text-black">
         <div className="flex items-center gap-2 mb-2">
           <div className="w-6 h-4 flex-shrink-0">{flag}</div>
-         <h3 className="text-xl font-bold">{title}</h3>
+         <h3 className="text-xl font-bold text-white">{title}</h3>
         </div>
-      <p className="text-sm text-gray-700">{description}</p>
+      <p className="text-sm text-white">{description}</p>
       </div>
 
     </Link>
